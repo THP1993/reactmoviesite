@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import LandingIcons from "../Components/LandingIcons";
 import Navbar from "../Components/Navbar"
+import PopcornRain from "../Components/popcorn"
 
 const Home = () => {
 
@@ -14,14 +15,18 @@ function goToMovies(event) {
 }
 
 
+
+
   return (
     <main>
+      
       <div class="flex flex-col">
       <nav className="navbar"> 
           <Navbar />
       </nav>
      </div>
       <section id="landing__page">
+        <PopcornRain />
         <div id="bg-icons" aria-hidden="true">
           <LandingIcons />
         </div>

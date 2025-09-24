@@ -4,11 +4,14 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Alatsi", serif;
+ 
 }
 
 html {
   scroll-behavior: smooth;
 }
+
+
 
 body {
   max-width: 100vw;
@@ -480,6 +483,64 @@ h2 {
 .selected__movie .movie-card {
    margin: 24px auto; 
   } 
+
+
+
+
+/* popcorn stuff */
+
+.popcorn__rain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1; 
+  overflow: hidden;
+}
+
+.popcorn__kernel {
+  position: absolute;
+  top: -12vh;
+  transform: translate3d(0, -20vh, 0);
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.096));
+  opacity: 0.98;
+  animation-name: popcornFall, popcornWobble;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: 1, infinite;
+  animation-fill-mode: forwards;
+  will-change: transform;
+}
+
+
+@keyframes popcornFall {
+  0% {
+    transform: translate3d(0, -20vh, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(0, 120vh, 0) rotate(calc(var(--spinDir) * 360deg));
+  }
+}
+
+
+@keyframes popcornWobble {
+  0% {
+    margin-left: -10px;
+  }
+  50% {
+    margin-left: 10px;
+  }
+  100% {
+    margin-left: -10px;
+  }
+}
+
+/* Accessibility: reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .popcorn__kernel {
+    animation: none !important;
+  }
+}
+
+
 
 
 /* responsive */

@@ -16,13 +16,13 @@ const MovieSearch = ({
         <div className="search__results--container" id="searchResults">
           {err && <p>{err}</p>}
 
-          {!err && list.map((m) => (
-            <Link to={`/Movie/${m.imdbID}`} className="movie-card" key={`${m.imdbID}-${m.Title}`}>
-              <h3>{m.Title}</h3>
-              <p>{m.Year}</p>
+          {!err && list.map((movie) => (
+            <Link to={`/Movie/${movie.imdbID}`} className="movie-card" key={`${movie.imdbID}-${movie.Title}`}>
+              <h3>{movie.Title}</h3>
+              <p>{movie.Year}</p>
               <img
-                src={m.Poster !== "N/A" ? m.Poster : placeholderPoster}
-                alt={m.Title}
+                src={movie.Poster !== "N/A" ? movie.Poster : placeholderPoster}
+                alt={movie.Title}
                 loading="lazy"
               />
             </Link>
