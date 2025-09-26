@@ -1,30 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import LandingIcons from "../Components/LandingIcons";
-import Navbar from "../Components/Navbar"
-import PopcornRain from "../Components/popcorn"
+import Navbar from "../Components/Navbar";
+import PopcornRain from "../Components/popcorn";
 
 const Home = () => {
+  const [term, setTerm] = useState("");
+  const navigate = useNavigate();
 
-const [term, setTerm] = useState("");
-const navigate = useNavigate();
-
-function goToMovies(event) {
-  const q = term
-  navigate(`/Movies?q=${encodeURIComponent(q)}`);
-}
-
-
-
+  function goToMovies(event) {
+    const q = term;
+    navigate(`/Movies?q=${encodeURIComponent(q)}`);
+  }
 
   return (
     <main>
-      
-      <div class="flex flex-col">
-      <nav className="navbar"> 
+      <div className="flex flex-col">
+        <nav className="navbar">
           <Navbar />
-      </nav>
-     </div>
+        </nav>
+      </div>
       <section id="landing__page">
         <PopcornRain />
         <div id="bg-icons" aria-hidden="true">
@@ -61,7 +56,11 @@ function goToMovies(event) {
                   value={term}
                   onChange={(event) => setTerm(event.target.value)}
                 />
-                <button className="search__btn--home" aria-label="Search" type="submit">
+                <button
+                  className="search__btn--home"
+                  aria-label="Search"
+                  type="submit"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="fa-solid fa-magnifying-glass"
@@ -76,9 +75,12 @@ function goToMovies(event) {
         </div>
 
         <div className="image-wrapper">
-  <img className="landing-img" src="/Assets/LandingImgRed.png" alt="Home cinema illustration" />
-</div>
-
+          <img
+            className="landing-img"
+            src="/Assets/LandingImgRed.png"
+            alt="Home cinema illustration"
+          />
+        </div>
       </section>
     </main>
   );

@@ -24,6 +24,18 @@ const MovieNavbar = ({ query, setQuery, onSubmit, loading }) => {
     }
   };
 
+  function openContact(event) {
+    document.body.classList.add("contact--open");
+  }
+
+  function closeContact() {
+    document.body.classList.remove("contact--open");
+  }
+
+  function onKeyDown2(event) {
+    if (event.key === "Escape") closeContact();
+  }
+
   return (
     <nav className="navbar">
       <img src="/Assets/Popcorn.webp" alt="" className="header-bg" />
@@ -42,24 +54,28 @@ const MovieNavbar = ({ query, setQuery, onSubmit, loading }) => {
         <div className="links nav__center">
           <ul className="nav__links">
             <li>
-              <Link to="/" className="link">
+              <Link to="/" className="link__movie">
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/Movies" className="link">
+              <Link to="/Movies" className="link__movie">
                 Movies
               </Link>
             </li>
             <li>
-              <a href="#" className="btn-contact">
+              <a href="#" onClick={openContact} className="btn-contact">
                 Contact Us
               </a>
             </li>
           </ul>
         </div>
 
-        <button className="btn__menu" onClick={openMenu} aria-label="Open menu">
+        <button
+          className="btn__menu btn__menu--movie"
+          onClick={openMenu}
+          aria-label="Open menu"
+        >
           <FontAwesomeIcon icon={faFilm} />
         </button>
 
@@ -83,7 +99,7 @@ const MovieNavbar = ({ query, setQuery, onSubmit, loading }) => {
               </Link>
             </li>
             <li className="menu__list">
-              <a href="#" className="menu__link" onClick={closeMenu}>
+              <a href="#" className="menu__link" onClick={openContact}>
                 Contact
               </a>
             </li>
@@ -118,6 +134,49 @@ const MovieNavbar = ({ query, setQuery, onSubmit, loading }) => {
               onChange={(event) => setQuery(event.target.value)}
               onKeyDown={onKeyDown}
             />
+          </form>
+        </div>
+      </div>
+      <div className="contact__backdrop" onKeyDown={onKeyDown2}>
+        <div className="contact__modal" role="dialog">
+          <button className="contact__close" onClick={closeContact}>
+            <FontAwesomeIcon icon={faTimes} />
+          </button>
+          <h3 className="contact__title" id="contact--title">
+            Contact Us
+          </h3>
+          <form
+            className="contact__form"
+            onSubmit={(event) => {
+              const fd = new FormData(event.currentTarget);
+              const email = fd.get("email");
+              const message = fd.get("message");
+              console.log({ email, message });
+              alert("Thanks! We'll get back to you soon!");
+              closeContact();
+            }}
+          >
+            <label className="contact__label">
+              Email
+              <input
+                type="email"
+                name="email"
+                placeholder="email"
+                required
+                className="contact__input"
+              />
+            </label>
+            <label className="contact__label">
+              Message
+              <textarea
+                name="message"
+                rows="5"
+                placeholder="How can we help you?"
+                required
+                className="contact__textarea"
+              ></textarea>
+            </label>
+            <button className="contact__submit">Send</button>
           </form>
         </div>
       </div>

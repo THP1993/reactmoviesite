@@ -48,29 +48,31 @@ function Movies() {
     const q = params.get("q");
     if (q) {
       setQuery(q);
-      searchMovies(q)
+      searchMovies(q);
     }
-  }, [location.search] )
-
+  }, [location.search]);
 
   return (
-    <div id="movies__page">
-      <MovieNavbar
-        query={query}
-        setQuery={setQuery}
-        onSubmit={() => searchMovies(query)}
-        loading={loading}
-      />
+    <div className="movies__background">
+      <img className="theater__background" src="/Assets/theater.jpg" />
 
-      
+      <div id="movies__content">
+        <MovieNavbar
+          query={query}
+          setQuery={setQuery}
+          onSubmit={() => searchMovies(query)}
+          loading={loading}
+        />
 
-      <MovieSearch
-        results={results}
-        loading={loading}
-        err={err}
-        placeholderPoster={PLACEHOLDER_POSTER}
-      />
-      <LandingIcons />
+        <MovieSearch
+          results={results}
+          loading={loading}
+          err={err}
+          placeholderPoster={PLACEHOLDER_POSTER}
+        />
+
+        <LandingIcons />
+      </div>
     </div>
   );
 }
