@@ -518,7 +518,7 @@ body.menu--open {
   width: 100%;
   max-width: 720px;
   text-shadow: 4px 5px 4px rgba(0, 0, 0, 0.712);
-  text-shadow: 5px 5px 8px rgba(255, 17, 17, 0.452);
+  text-shadow: 5px 5px 8px rgba(255, 255, 255, 0.452);
   opacity: 100%;
   z-index: 2;
   position: relative;
@@ -595,8 +595,8 @@ body.menu--open {
   text-align: center;
   width: 100%;
   max-width: 350px;
-  text-shadow: 4px 5px 4px rgba(0, 0, 0, 0.712);
-  text-shadow: 5px 5px 8px rgba(255, 17, 17, 0.452);
+  /* text-shadow: 4px 5px 4px rgba(0, 0, 0, 0.712);
+  text-shadow: 5px 5px 8px rgba(255, 17, 17, 0.452); */
   opacity: 100%;
   z-index: 2;
   position: relative;
@@ -624,7 +624,7 @@ body.menu--open {
   height: auto;
   max-height: 100%;
   object-fit: contain;
-  background: #000;
+
   border-radius: 6px;
   place-self: center stretch;
 }
